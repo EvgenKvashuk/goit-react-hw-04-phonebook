@@ -5,9 +5,7 @@ import Filter from "./Filter/Filter";
 import ContactsList from "./ContactsList/ContactsList";
 import { useState } from "react";
 
-
-
-const App = ({ }) => {
+const App = () => {
 
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState("");
