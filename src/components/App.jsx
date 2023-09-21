@@ -23,6 +23,7 @@ const App = () => {
       Notiflix.Notify.info('is already in contacts');
     } else {
       setContacts(state => [...state, newContact]);
+      Notiflix.Notify.success('The contact was add successfully')
     }
   }
 
