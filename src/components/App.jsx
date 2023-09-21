@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import Filter from "./Filter/Filter";
 import ContactsList from "./ContactsList/ContactsList";
 import { useState } from "react";
+import Notiflix from 'notiflix';
 
 const App = () => {
 
@@ -17,9 +18,9 @@ const App = () => {
     const newContact = { id: nanoid(), name, number };
 
     if (names.includes(name)) {
-      alert(`${name} is already in contacts`);
+      Notiflix.Notify.info('is already in contacts');
     } else if (numbers.includes(number)) {
-      alert(`${number} is already in contacts`);
+      Notiflix.Notify.info('is already in contacts');
     } else {
       setContacts(state => [...state, newContact]);
     }
@@ -27,6 +28,7 @@ const App = () => {
 
   const deleteContact = contactId => {
     setContacts(state => state.filter(contact => contact.id !== contactId));
+    Notiflix.Notify.success('The contact was deleted successfully')
   };
 
   const changeFilter = (e) => {
