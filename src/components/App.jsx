@@ -3,7 +3,7 @@ import Form from "./Form/Form";
 import { nanoid } from "nanoid";
 import Filter from "./Filter/Filter";
 import ContactsList from "./ContactsList/ContactsList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Notiflix from 'notiflix';
 
 const App = () => {
@@ -38,6 +38,21 @@ const App = () => {
 
   const NormToLowerCaseFilter = filter.toLowerCase()
   const FilteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(NormToLowerCaseFilter));
+
+  // ===========================
+  useEffect(() => {
+
+    const lockalStorKey = "cont";
+    const refreshPage = function (contact) {
+      localStorage.setItem(lockalStorKey, contacts);
+
+    };
+    const getContacts = Math.round(localStorage.getItem('videoplayer-current-time'));
+
+  }, [contacts]);
+
+
+  // ====================================
 
   return (
     <>
