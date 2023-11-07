@@ -8,8 +8,13 @@ import Notiflix from 'notiflix';
 
 const App = () => {
 
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState( 
+    JSON.parse(window.localStorage.getItem("muContacts")) ?? []);
   const [filter, setFilter] = useState("");
+
+  useEffect(() => {
+    window.localStorage.setItem("muContacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   const addContact = (name, number) => {
     const names = contacts.map(contact => contact.name);
@@ -38,21 +43,6 @@ const App = () => {
 
   const NormToLowerCaseFilter = filter.toLowerCase()
   const FilteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(NormToLowerCaseFilter));
-
-  // ===========================
-  useEffect(() => {
-
-    const lockalStorKey = "cont";
-    const refreshPage = function (contact) {
-      localStorage.setItem(lockalStorKey, contacts);
-
-    };
-    const getContacts = Math.round(localStorage.getItem('videoplayer-current-time'));
-
-  }, [contacts]);
-
-
-  // ====================================
 
   return (
     <>

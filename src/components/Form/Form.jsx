@@ -1,10 +1,11 @@
 import css from './Form.module.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Form = ({ onSubmit }) => {
 
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
+
 
     const handleImputName = e => {
         setName(e.target.value)
@@ -23,7 +24,7 @@ const Form = ({ onSubmit }) => {
     const reset = () => {
         setName('');
         setNumber('');
-      };
+    };
 
     return (
         <div className={css.wrapper}>
