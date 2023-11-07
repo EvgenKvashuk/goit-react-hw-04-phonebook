@@ -1,5 +1,5 @@
 import css from './Form.module.css'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Form = ({ onSubmit }) => {
 
